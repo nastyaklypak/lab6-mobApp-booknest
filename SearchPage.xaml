@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookNest.SearchPage"
+             Title="Search books">
+
+    <Grid RowDefinitions="Auto,*" Padding="12" RowSpacing="10">
+
+        <!-- Рядок пошуку -->
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+            <Entry x:Name="queryEntry" Text="Dune" Placeholder="Title or author" Completed="OnSearch" />
+            <Button Grid.Column="1" Text="Search" Clicked="OnSearch" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <!-- Список результатів -->
+            <CollectionView x:Name="list" SelectionMode="Single" SelectionChanged="OnSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="56,*,Auto" ColumnSpacing="10" Padding="0,6">
+                            <Image Source="{Binding Cover}" WidthRequest="56" HeightRequest="84" Aspect="AspectFill" />
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="16" MaxLines="2" />
+                                <Label Text="{Binding Info}" TextColor="Gray" FontSize="13" MaxLines="1" />
+                            </VerticalStackLayout>
+                            <!-- зірочка: додати / прибрати з обраного -->
+                            <Button Grid.Column="2" Text="{Binding Star}" Clicked="OnStar"
+                                    WidthRequest="46" HeightRequest="46" Padding="0" FontSize="22"
+                                    VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Повідомлення: підказка, помилка, "нічого не знайдено" -->
+            <Label x:Name="message" Text="Type a title or an author and press Search."
+                   TextColor="Gray" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+            <ActivityIndicator x:Name="spinner" IsRunning="False" IsVisible="False"
+                               VerticalOptions="Center" HorizontalOptions="Center" />
+        </Grid>
+    </Grid>
+</ContentPage>

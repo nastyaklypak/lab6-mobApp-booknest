@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookNest.FavoritesPage"
+             Title="Favorite books">
+
+    <Grid Padding="12">
+        <CollectionView x:Name="list" SelectionMode="Single" SelectionChanged="OnSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="56,*,Auto" ColumnSpacing="10" Padding="0,6">
+                        <Image Source="{Binding Cover}" WidthRequest="56" HeightRequest="84" Aspect="AspectFill" />
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="16" MaxLines="2" />
+                            <Label Text="{Binding Info}" TextColor="Gray" FontSize="13" MaxLines="1" />
+                        </VerticalStackLayout>
+                        <Button Grid.Column="2" Text="Remove" Clicked="OnRemove" FontSize="13"
+                                VerticalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label x:Name="emptyLabel" Text="No favorite books yet.&#10;Tap the star in the Search tab."
+               TextColor="Gray" HorizontalTextAlignment="Center" VerticalOptions="Center" />
+    </Grid>
+</ContentPage>

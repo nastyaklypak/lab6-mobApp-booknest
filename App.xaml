@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookNest.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="Primary">#4F46E5</Color>
+
+            <!-- Стилі для світлої й темної теми -->
+            <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Light=#F5F5FA, Dark=#111118}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}" />
+                <Setter Property="PlaceholderColor" Value="Gray" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

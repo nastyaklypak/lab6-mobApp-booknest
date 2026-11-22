@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookNest.SettingsPage"
+             Title="Settings">
+
+    <VerticalStackLayout Padding="16" Spacing="16">
+
+        <Grid ColumnDefinitions="*,Auto">
+            <Label Text="Dark theme" FontSize="17" VerticalOptions="Center" />
+            <Switch x:Name="themeSwitch" Grid.Column="1" Toggled="OnThemeToggled" />
+        </Grid>
+
+        <Grid ColumnDefinitions="*,Auto">
+            <Label x:Name="goalLabel" FontSize="17" VerticalOptions="Center" />
+            <Stepper x:Name="goalStepper" Grid.Column="1" Minimum="30" Maximum="1200" Increment="30"
+                     ValueChanged="OnGoalChanged" />
+        </Grid>
+
+        <Button Text="Clear reading diary" Clicked="OnClearSessions" />
+        <Button Text="Clear favorite books" Clicked="OnClearFavorites" />
+
+        <Label Text="BookNest 1.0 - data from openlibrary.org" TextColor="Gray" FontSize="13"
+               HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+</ContentPage>
